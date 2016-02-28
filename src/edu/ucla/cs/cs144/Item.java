@@ -17,7 +17,6 @@ public class Item {
 	public String description;
 	public String sellerrating;
 
-	//item class that holds onto item data
 	Item(int paramid, String paramname, String paramcurrently,String parambuyprice,
 			String paramfirstbid, String paramnumbids, String paramlocation, 
 			String paramlatitude, String paramlongitude, String paramcountry,
