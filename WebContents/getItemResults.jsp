@@ -5,7 +5,7 @@
 <% 
 	Item item = (Item) request.getAttribute("item");
 	Vector<String> category = (Vector) request.getAttribute("category");
-	Vector<BidInfo> bidinfo = (Vector) request.getAttribute("bidinfo");
+	Vector<Bid> bids = (Vector) request.getAttribute("bid");
 	String la = "1.0";
 	String lo = "1.0";
 	String location = "a";
@@ -204,7 +204,7 @@
 				</br>
 				<h2>Bid History</h2>
 				<%
-					if (bidinfo.size() == 0) {
+					if (bids.size() == 0) {
 						%>
 						<i>No Bids Yet</i>
 						</br>
@@ -212,7 +212,7 @@
 						<%
 					}
 					else {
-						for (BidInfo bid : bidinfo) {
+						for (Bid bid : bids) {
 							%>
 							<b><%= bid.id %></b> (<%= bid.rating %>, <%= bid.location %>, <%= bid.country %>)
 							</br>

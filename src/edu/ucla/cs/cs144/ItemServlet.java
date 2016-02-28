@@ -266,8 +266,8 @@ public class ItemServlet extends HttpServlet implements Servlet {
             /* Process with respect to bids and bidders */
             Element itemBids = getElementByTagNameNR(item, "Bids");
             Element[] itemBidArray = getElementsByTagNameNR(itemBids, "Bid");
-            /* container for bidinfos */
-            Vector<BidInfo> o_bidinfo = new Vector<BidInfo>();
+            /* container for Bids */
+            Vector<Bid> o_Bid = new Vector<Bid>();
             for (Element itemBid : itemBidArray) {
                 /* Process with respect to bids */
                 Element itemBidder = getElementByTagNameNR(itemBid, "Bidder");
@@ -283,19 +283,19 @@ public class ItemServlet extends HttpServlet implements Servlet {
                 String bidderLocation = truncate(escape(getElementTextByTagNameNR(itemBidder, "Location")), 80);
                 /* Country */
                 String bidderCountry = truncate(escape(getElementTextByTagNameNR(itemBidder, "Country")), 80);
-                /* Append the entry to BidInfo object */
-                BidInfo temp_bid = new BidInfo(bidBidderID, bidTime, bidAmount, bidderBidderRating,
+                /* Append the entry to Bid object */
+                Bid temp_bid = new Bid(bidBidderID, bidTime, bidAmount, bidderBidderRating,
                 								bidderLocation, bidderCountry);
-                /* Append the BidInfo object to array */
-                o_bidinfo.add(temp_bid);
+                /* Append the Bid object to array */
+                o_Bid.add(temp_bid);
             }
-            //sort bidinfo vector
-            Collections.sort(o_bidinfo);
+            //sort Bid vector
+            Collections.sort(o_Bid);
 
             //set request attributes accordingly
             request.setAttribute("item", o_item);
             request.setAttribute("category", o_category);
-            request.setAttribute("bidinfo", o_bidinfo);
+            request.setAttribute("bid", o_Bid);
 
             //session info for buy now
             //initialize session
